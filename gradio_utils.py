@@ -1,4 +1,7 @@
 import os
+from dotenv import load_dotenv
+load_dotenv()
+main_dir = os.getenv("ROOT_DIRECTORY")
 
 # App Canny utils
 
@@ -8,19 +11,19 @@ def edge_path_to_video_path(edge_path):
 
     vid_name = edge_path.split("/")[-1]
     if vid_name == "butterfly.mp4":
-        video_path = "__assets__/canny_videos_mp4/butterfly.mp4"
+        video_path = f"{main_dir}/pairZero/__assets__/canny_videos_mp4/butterfly.mp4"
     elif vid_name == "deer.mp4":
-        video_path = "__assets__/canny_videos_mp4/deer.mp4"
+        video_path = f"{main_dir}/pairZero/__assets__/canny_videos_mp4/deer.mp4"
     elif vid_name == "fox.mp4":
-        video_path = "__assets__/canny_videos_mp4/fox.mp4"
+        video_path = f"{main_dir}/pairZero/__assets__/canny_videos_mp4/fox.mp4"
     elif vid_name == "girl_dancing.mp4":
-        video_path = "__assets__/canny_videos_mp4/girl_dancing.mp4"
+        video_path = f"{main_dir}/pairZero/__assets__/canny_videos_mp4/girl_dancing.mp4"
     elif vid_name == "girl_turning.mp4":
-        video_path = "__assets__/canny_videos_mp4/girl_turning.mp4"
+        video_path = f"{main_dir}/pairZero/__assets__/canny_videos_mp4/girl_turning.mp4"
     elif vid_name == "halloween.mp4":
-        video_path = "__assets__/canny_videos_mp4/halloween.mp4"
+        video_path = f"{main_dir}/pairZero/__assets__/canny_videos_mp4/halloween.mp4"
     elif vid_name == "santa.mp4":
-        video_path = "__assets__/canny_videos_mp4/santa.mp4"
+        video_path = f"{main_dir}/pairZero/__assets__/canny_videos_mp4/santa.mp4"
 
     assert os.path.isfile(video_path)
     return video_path
@@ -29,11 +32,11 @@ def edge_path_to_video_path(edge_path):
 # App Pose utils
 def motion_to_video_path(motion):
     videos = [
-        "__assets__/poses_skeleton_gifs/dance1_corr.mp4",
-        "__assets__/poses_skeleton_gifs/dance2_corr.mp4",
-        "__assets__/poses_skeleton_gifs/dance3_corr.mp4",
-        "__assets__/poses_skeleton_gifs/dance4_corr.mp4",
-        "__assets__/poses_skeleton_gifs/dance5_corr.mp4"
+        f"{main_dir}/pairZero/__assets__/poses_skeleton_gifs/dance1_corr.mp4",
+        f"{main_dir}/pairZero/__assets__/poses_skeleton_gifs/dance2_corr.mp4",
+        f"{main_dir}/pairZero/__assets__/poses_skeleton_gifs/dance3_corr.mp4",
+        f"{main_dir}/pairZero/__assets__/poses_skeleton_gifs/dance4_corr.mp4",
+        f"{main_dir}/pairZero/__assets__/poses_skeleton_gifs/dance5_corr.mp4"
     ]
     if len(motion.split(" ")) > 1 and motion.split(" ")[1].isnumeric():
         id = int(motion.split(" ")[1]) - 1
@@ -45,16 +48,16 @@ def motion_to_video_path(motion):
 # App Canny Dreambooth utils
 def get_video_from_canny_selection(canny_selection):
     if canny_selection == "woman1":
-        input_video_path = "__assets__/db_files_2fps/woman1.mp4"
+        input_video_path = f"{main_dir}/pairZero/__assets__/db_files_2fps/woman1.mp4"
 
     elif canny_selection == "woman2":
-        input_video_path = "__assets__/db_files_2fps/woman2.mp4"
+        input_video_path = f"{main_dir}/pairZero/__assets__/db_files_2fps/woman2.mp4"
 
     elif canny_selection == "man1":
-        input_video_path = "__assets__/db_files_2fps/man1.mp4"
+        input_video_path = f"{main_dir}/pairZero/__assets__/db_files_2fps/man1.mp4"
 
     elif canny_selection == "woman3":
-        input_video_path = "__assets__/db_files_2fps/woman3.mp4"
+        input_video_path = f"{main_dir}/pairZero/__assets__/db_files_2fps/woman3.mp4"
     else:
         input_video_path = canny_selection
 
@@ -89,8 +92,8 @@ def get_canny_name_from_id(id):
 
 def logo_name_to_path(name):
     logo_paths = {
-        'Picsart AI Research': '__assets__/pair_watermark.png',
-        'Text2Video-Zero': '__assets__/t2v-z_watermark.png',
+        'Picsart AI Research': f'{main_dir}/pairZero/__assets__/pair_watermark.png',
+        'Text2Video-Zero': f'{main_dir}/pairZero/__assets__/t2v-z_watermark.png',
         'None': None
     }
     if name in logo_paths:
